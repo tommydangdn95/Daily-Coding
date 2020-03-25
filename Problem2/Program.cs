@@ -11,7 +11,7 @@ namespace Problem2
          */
         static void Main(string[] args)
         {
-            int[] arrays = new int[] { 1, 2, 3, 4, 5 };
+            int[] arrays = new int[] { 0, 0, 3, 4, 5 };
             var newProductArrays = ProductArray(arrays);
             Console.Write("[ ");
             foreach(var item in newProductArrays)
@@ -24,38 +24,30 @@ namespace Problem2
         private static int[] ProductArray(int[] arrays)
         {
             int[] newArrays = new int[arrays.Length];
+            int products = 1;
             var countNumberZero = 0;
             for(int i=0;i<arrays.Length; i++)
             {
-                if(arrays[i] ==0)
+                if(arrays[i] !=0)
+                {
+                    products *= arrays[i];
+                }
+                else
                 {
                     countNumberZero++;
                 }
             }
 
-            int products = 1;
+           
             switch (countNumberZero)
             {
                 case 0:
-                    for (int i = 0; i < arrays.Length; i++)
-                    {
-                        products *= arrays[i];
-                    }
-
                     for (int i = 0; i < arrays.Length; i++)
                     {
                         newArrays[i] = products / arrays[i];
                     }
                     break;
                 case 1:
-                    for(int i=0; i< arrays.Length; i++)
-                    {
-                        if(arrays[i] != 0)
-                        {
-                            products *= arrays[i];
-                        }
-                    }
-
                     for (int i=0; i< arrays.Length; i++)
                     {
                         if(arrays[i] == 0)
